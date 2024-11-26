@@ -22,11 +22,11 @@ public class YoilTeller2 {
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		
-		// 2. 작업
 		int yyyy = Integer.parseInt(year);
 		int mm = Integer.parseInt(month);
 		int dd = Integer.parseInt(day);
 		
+		// 2. 작업
 		Calendar cal = Calendar.getInstance();
 		cal.set(yyyy,  mm -1, dd);
 		

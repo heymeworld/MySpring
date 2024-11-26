@@ -28,13 +28,13 @@ public class YoilTeller {
 //		model.addAttribute("day", myDate.getDay());
 		
 		model.addAttribute("myDate", date);
-		model.addAttribute("yoil2", yoil);
+		model.addAttribute("yoil", yoil);
 		
 		return "yoil";
 	}
 	
 	// 붙어있는 메서드 실행
-	@ModelAttribute("yoil2") // ModelAttribute 변수명 
+	@ModelAttribute("yoil") // ModelAttribute 변수명 
 	private char getYoil(MyDate date) {
        Calendar cal = Calendar.getInstance();
        cal.set(date.getYear(), date.getMonth() - 1, date.getDay());
