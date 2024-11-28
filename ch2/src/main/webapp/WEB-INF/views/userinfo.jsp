@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>id : ${id}</h1>
-	<h1>pw : ${pw}</h1>
+	<h1>pw : ${pwd}</h1>
 </body>
 </html>
