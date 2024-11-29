@@ -3,6 +3,7 @@ package com.fastcampus.ch2;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 	@RequestMapping("/login")
-	public String main(HttpServletRequest request, HttpServletResponse response,
+	public String login(HttpServletRequest request, HttpServletResponse response,
 			String id, String pwd, boolean rememberId) throws Exception {
 //		System.out.println("id : "+id);
 //		System.out.println("pwd : "+pwd);
 //		System.out.println("rememberId : "+rememberId);
 		
+		// 2-2. id와 pwd가 일치하면,
+		//  세션 객체를 얻어오기
+		HttpSession session = request.getSession();
+		//  세션 객체에 id를 저장
+		session.setAttribute("id", id);
+				
 		if(rememberId) {
 			// true : 쿠키를 생성
 			Cookie cookie = new Cookie("id", id);
@@ -41,6 +48,15 @@ public class LoginController {
 //
 //        return "redirect:"+toURL;
 		return "login";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		// 1. 세션을 종료 	
+		session.invalidate();
+		// 2. 홈으로 이동		
+		
+		return "redirect:/";
 	}
 	
 //	@RequestMapping("/login")
